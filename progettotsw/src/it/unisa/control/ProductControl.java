@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import it.unisa.model.ProductModel;
 
 import it.unisa.model.ProductModelDS;
+import it.unisa.model.UserBean;
 import it.unisa.model.Cart;
 import it.unisa.model.ProductBean;
 import it.unisa.model.ProductCart;
@@ -38,7 +39,7 @@ public class ProductControl extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		
 		Cart cart = (Cart)request.getSession().getAttribute("cart");
 		if(cart == null) {
 			cart = new Cart();
@@ -91,7 +92,10 @@ public class ProductControl extends HttpServlet {
 					for(ProductCart beancart: car.getProducts()) {
 						
 						model.doUpdate(beancart);
-						
+						int i=beancart.getNumProduct();
+						for(int x=1;x<i;i++) {
+							cart.deleteProduct(beancart);
+						}
 						
 					}
 					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Checkout.jsp");

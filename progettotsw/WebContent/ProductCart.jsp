@@ -5,7 +5,7 @@
 	Collection<?> products = (Collection<?>) request.getAttribute("products");
 
 	ProductBean product = (ProductBean) request.getAttribute("product");
-	
+	UserBean currentUser = (UserBean) (session.getAttribute("currentSessionUser"));
 	Cart cart = (Cart) request.getAttribute("cart");
 	List<ProductCart> prodcart = cart.getProducts(); 
 %>
@@ -21,7 +21,7 @@
 </head>
 
 <body>
-
+	 <a href="product">List</a>
 	<% if(cart != null) { %>
 
 		<h2>Cart</h2>
@@ -50,8 +50,14 @@
 		</tr>
 		<%} %>
 		<%}%>
-		<%}%>
+		
+		<%if (currentUser!=null){%>
 		<a href="product?action=checkout&carrello=<%=request.getAttribute("cart")%>">CHECK OUT</a>
-	</table>		
+		<%} if(currentUser==null) { %>
+		<a href="LoginPage.jsp">EFFETTUA LOGIN PRIMA DELL'ACQUISTOT</a>
+		<%}%>
+		<%}%>
+	</table>	
+	
 </body>
 </html>

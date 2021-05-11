@@ -25,7 +25,8 @@
 
 <body>
 	<h2>Products</h2>
-	<a href="product">List</a>
+	<a href="LoginPage.jsp">LOGIN</a>
+	<a href="Paginadiregistrazione.jsp">REGISTRAZIONE</a>
 	<table border="1">
 		<tr>
 			<th>Codice <a href="product?sort=code">Sort</a></th>
