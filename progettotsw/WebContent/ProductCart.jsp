@@ -7,7 +7,8 @@
 	ProductBean product = (ProductBean) request.getAttribute("product");
 	UserBean currentUser = (UserBean) (session.getAttribute("currentSessionUser"));
 	Cart cart = (Cart) request.getAttribute("cart");
-	List<ProductCart> prodcart = cart.getProducts(); 
+	
+	List<ProductCart> prodcart=cart.getProducts(); 
 %>
 
 <!DOCTYPE html>
@@ -47,17 +48,19 @@
 			<td><%=quant%></td>
 			<td><%=price%></td>
 			<td><a href="product?action=deleteC&id=<%=code%>">Delete from cart</a></td>
+			
 		</tr>
 		<%} %>
 		<%}%>
 		
+		
 		<%if (currentUser!=null){%>
 		<a href="product?action=checkout&carrello=<%=request.getAttribute("cart")%>">CHECK OUT</a>
 		<%} if(currentUser==null) { %>
-		<a href="LoginPage.jsp">EFFETTUA LOGIN PRIMA DELL'ACQUISTOT</a>
+		DEVI EFFETTUARE IL<a href="LoginPage.jsp">LOGIN</a> PRIMA DI POTER ACQUISTARE
 		<%}%>
 		<%}%>
 	</table>	
-	
+		
 </body>
 </html>

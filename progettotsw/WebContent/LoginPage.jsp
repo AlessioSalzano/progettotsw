@@ -1,6 +1,10 @@
 <%@ page language="java" 
     contentType="text/html; charset=windows-1256"
-    pageEncoding="windows-1256"
+    pageEncoding="windows-1256"%>
+     <%@ page import="java.util.*,it.unisa.model.*"%>
+    <% 
+   UserBean currentUser = (UserBean) session.getAttribute("currentSessionUser");
+   
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
@@ -13,17 +17,22 @@
 	</head>
 
 	<body>
+	<% if(currentUser==null)  { %>
 		<form action="Login">
 
 			Please enter your username 		
 			<input type="text" name="un"/><br>		
 		
 			Please enter your password
-			<input type="text" name="pw"/>
+			<input type="password" name="pw"/>
 			
 			<input type="submit" value="submit">			
 		
 		</form>
 		<h3>Registrati <a href="Paginadiregistrazione.jsp">qui</a></h3>
+	<%	}%>
+<% if(currentUser!=null)  { %>
+<h1>HAI GIA EFFETTUATO IL LOGIN</h1>
+		<%	}%>
 	</body>
 </html>

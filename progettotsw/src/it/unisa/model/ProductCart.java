@@ -50,4 +50,7 @@ public void decrementNumProduct() {
 public String getName() {
 	return(getProduct().getName());
 }
+public int getIva() {
+	return(getProduct().getIva());
+}
 }

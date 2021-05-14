@@ -14,6 +14,10 @@ import it.unisa.model.ProductModel;
 import it.unisa.model.ProductModelDS;
 import it.unisa.model.UserBean;
 import it.unisa.model.Cart;
+import it.unisa.model.ComposizioneDAO;
+import it.unisa.model.ListaComposizione;
+import it.unisa.model.ListaOrdiniBean;
+import it.unisa.model.OrdiniDAO;
 import it.unisa.model.ProductBean;
 import it.unisa.model.ProductCart;
 /**
@@ -39,7 +43,6 @@ public class ProductControl extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
 		Cart cart = (Cart)request.getSession().getAttribute("cart");
 		if(cart == null) {
 			cart = new Cart();
@@ -88,7 +91,8 @@ public class ProductControl extends HttpServlet {
 				}
 				else if (action.equalsIgnoreCase("checkout")) {
 					Cart car=(Cart)request.getSession().getAttribute("cart");
-			
+					UserBean user= (UserBean) request.getSession().getAttribute("currentSessionUser");
+					model.doSave(user,cart);
 					for(ProductCart beancart: car.getProducts()) {
 						
 						model.doUpdate(beancart);
@@ -98,7 +102,36 @@ public class ProductControl extends HttpServlet {
 						}
 						
 					}
+					
 					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Checkout.jsp");
+					dispatcher.forward(request, response);
+				}
+				else if (action.equalsIgnoreCase("vedicarrello")) {
+					request.getSession().setAttribute("cart", cart);
+					request.setAttribute("cart", cart);
+					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/ProductCart.jsp");
+					dispatcher.forward(request, response);
+				}
+				else if(action.equalsIgnoreCase("vediordini")) {
+					UserBean user= (UserBean) request.getSession().getAttribute("currentSessionUser");
+					if(user!=null) {
+					String username=user.getUsername();
+					ListaOrdiniBean lista=OrdiniDAO.doRetrieveByKey(username);
+					request.setAttribute("listaordini", lista);
+					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Listaordini.jsp");
+					dispatcher.forward(request, response);
+				}
+					else
+						System.out.println("devi loggare prima");
+					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/erroreprodotti.jsp");
+					dispatcher.forward(request, response);
+					}
+				else if(action.equalsIgnoreCase("dettagliordine")) {
+					int codice = Integer.parseInt(request.getParameter("codice"));
+					ListaComposizione list=ComposizioneDAO.doRetrieveByKey(codice);
+					System.out.println(list.getOrdini().size()+" prima di me ci devono essere il numero di ordini");
+					request.setAttribute("listacomposizione", list);
+					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Listacomposizione.jsp");
 					dispatcher.forward(request, response);
 				}
 			}			

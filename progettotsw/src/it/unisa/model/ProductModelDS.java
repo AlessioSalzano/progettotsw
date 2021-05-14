@@ -202,6 +202,67 @@ public class ProductModelDS implements ProductModel {
 			}
 			
 		}
+	public synchronized void doSave(UserBean user, Cart cart)throws SQLException {
+		double totale=0;
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		String sql=  "INSERT INTO " + "ordine"
+				+ " (numordine, USERNAME, PREZZO) VALUES (?, ?, ?)";
+		String sss= "SELECT MAX(numordine) FROM ordine";
+		
+		String aaa=  "INSERT INTO " + "composizione"
+				+ " (codice, numordine, quantita, iva, prezzototale, prezzosingolopezzo) VALUES (?, ?, ?, ?, ?, ?)";
+		for(int i=0;i<cart.size();i++) {
+			totale=totale+cart.getindex(i).getTotalCost();
+			
+		}
+		ProductCart prod=new ProductCart();
+		int i=0;
+			try { 
+				connection = ds.getConnection();
+				preparedStatement = connection.prepareStatement(sss);
+				ResultSet rs = preparedStatement.executeQuery();
+				while (rs.next()) {
+				i=rs.getInt(1)+1;}
+				preparedStatement.close();
+				preparedStatement = connection.prepareStatement(sql);
+				preparedStatement.setInt(1,i);
+				preparedStatement.setString(2, user.getUsername());
+				preparedStatement.setDouble(3,totale);
+				preparedStatement.executeUpdate();
+				preparedStatement.close();
+				
+				for(int x=0; x<cart.size();x++) {
+					preparedStatement = connection.prepareStatement(aaa);
+					prod=cart.getindex(x);
+					preparedStatement.setInt(1,prod.getProductID());
+					preparedStatement.setInt(2, i);
+					preparedStatement.setInt(3,prod.getNumProduct());
+					preparedStatement.setInt(4,prod.getIva());
+					preparedStatement.setDouble(5, totale);
+					preparedStatement.setInt(6,prod.getPrice());
+					preparedStatement.executeUpdate();
+					preparedStatement.close();
+				}
+		}
+		
+			finally {
+				try {
+					if (preparedStatement != null)
+						preparedStatement.close();
+				} finally {
+					if (connection != null)
+						connection.close();
+				}
+			}
+		
+			
+		}
+		
+	public synchronized void doSave(ProductCart productcart, int codice)throws SQLException {
+		
+	}
+	
 	}
 
 

@@ -42,7 +42,7 @@ try
      }
 	        
      else 
-          response.sendRedirect("invalidLogin.jsp"); //error page 
+          response.sendRedirect("loginfailed.jsp"); //error page 
 } 
 		
 		

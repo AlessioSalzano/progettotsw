@@ -25,7 +25,7 @@ public class UserDAO
       String password = bean.getPassword();   
 	    
       String searchQuery =
-            "select * from cliente where nome='"
+            "select * from cliente where username='"
                      + username
                      + "' AND password='"
                      + password
@@ -118,18 +118,19 @@ return bean;
 
 
         String insertSQL = "INSERT INTO " + "cliente"
-                + " (nome, cognome, indirizzo, password, cvv, numcarta, intestatario) VALUES (?, ?, ?, ?, ?, ?, ?)";
+                + " (username, nome, cognome, indirizzo, password, cvv, numcarta, intestatario) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
         try {
         	
             preparedStatement = currentCon.prepareStatement(insertSQL);
-            preparedStatement.setString(1, user1.getFirstName());
-            preparedStatement.setString(2, user1.getLastName());
-            preparedStatement.setString(3, user1.getIndirizzo());
-            preparedStatement.setString(4, user1.getPassword());
-            preparedStatement.setInt(5, user1.getCvv());
-            preparedStatement.setInt(6, user1.getNumerocarta());
-            preparedStatement.setString(7, user1.getIntestatario());
+            preparedStatement.setString(1, user1.getUsername());
+            preparedStatement.setString(2, user1.getFirstName());
+            preparedStatement.setString(3, user1.getLastName());
+            preparedStatement.setString(4, user1.getIndirizzo());
+            preparedStatement.setString(5, user1.getPassword());
+            preparedStatement.setInt(6, user1.getCvv());
+            preparedStatement.setInt(7, user1.getNumerocarta());
+            preparedStatement.setString(8, user1.getIntestatario());
 
             preparedStatement.executeUpdate();
             
@@ -147,4 +148,3 @@ return bean;
     }   
   
 }
-

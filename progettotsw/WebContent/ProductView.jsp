@@ -25,8 +25,11 @@
 
 <body>
 	<h2>Products</h2>
+	<a href="product?action=vediordini">ORDINI</a>
+	<a href="product?action=vedicarrello">CART</a>
 	<a href="LoginPage.jsp">LOGIN</a>
 	<a href="Paginadiregistrazione.jsp">REGISTRAZIONE</a>
+	<a href="product?action=vediordini">ORDINI</a>
 	<table border="1">
 		<tr>
 			<th>Codice <a href="product?sort=code">Sort</a></th>
@@ -41,7 +44,7 @@
 				Iterator<?> it = products.iterator();
 				while (it.hasNext()) {
 					ProductBean bean = (ProductBean) it.next();
-		%>
+					%>
 		<tr>
 			<td><%=bean.getCode()%></td>
 			<td><%=bean.getName()%></td>

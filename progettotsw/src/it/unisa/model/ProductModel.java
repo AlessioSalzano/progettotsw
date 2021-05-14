@@ -13,4 +13,7 @@ public interface ProductModel {
 	public Collection<ProductBean> doRetrieveAll(String order) throws SQLException;
 	
 	public void doUpdate (ProductCart prod) throws SQLException;
+	
+	public void doSave (UserBean user, Cart cart) throws SQLException;
+	public void doSave (ProductCart beancart, int codice) throws SQLException;
 }

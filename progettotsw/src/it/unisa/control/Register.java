@@ -20,6 +20,7 @@ public class Register extends HttpServlet {
 		{	    
 
 		     UserBean user = new UserBean();
+		     user.setUsername(request.getParameter("us"));
 		     user.setFirstName(request.getParameter("un"));
 		     user.setLastName(request.getParameter("cg"));
 		     user.setIndirizzo(request.getParameter("ind"));
