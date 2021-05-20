@@ -62,11 +62,16 @@ public class UserDAO
       {
          String firstName = rs.getString("nome");
          String lastName = rs.getString("cognome");
-	     	
+	     String admin=rs.getString("ruolo");
          System.out.println("Welcome " + firstName);
          bean.setFirstName(firstName);
          bean.setLastName(lastName);
          bean.setValid(true);
+         if(admin.equalsIgnoreCase("admin")) {
+        	 bean.setAdmin(true);
+         }
+         else
+        bean.setAdmin(false);
       }
    } 
 

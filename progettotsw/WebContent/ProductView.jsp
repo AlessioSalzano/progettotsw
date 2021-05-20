@@ -29,7 +29,7 @@
 	<a href="product?action=vedicarrello">CART</a>
 	<a href="LoginPage.jsp">LOGIN</a>
 	<a href="Paginadiregistrazione.jsp">REGISTRAZIONE</a>
-	<a href="product?action=vediordini">ORDINI</a>
+	<a href="product?action=vediadmin">ADMIN</a>
 	<table border="1">
 		<tr>
 			<th>Codice <a href="product?sort=code">Sort</a></th>

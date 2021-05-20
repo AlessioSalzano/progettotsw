@@ -37,19 +37,18 @@ public class ProductModelDS implements ProductModel {
 		PreparedStatement preparedStatement = null;
 
 		String insertSQL = "INSERT INTO " + ProductModelDS.TABLE_NAME
-				+ " (CODE, NAME, DESCRIPTION, PRICE, QUANTITY, IVA, RICONDIZIONATO, SCONTO) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+				+ " (NAME, DESCRIPTION, PRICE, QUANTITY, IVA, RICONDIZIONATO, SCONTO) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
-			preparedStatement.setInt(1, product.getCode());
-			preparedStatement.setString(2, product.getName());
-			preparedStatement.setString(3, product.getDescription());
-			preparedStatement.setInt(4, product.getPrice());
-			preparedStatement.setInt(8, product.getQuantity());
+			preparedStatement.setString(1, product.getName());
+			preparedStatement.setString(2, product.getDescription());
+			preparedStatement.setInt(3, product.getPrice());
+			preparedStatement.setInt(4, product.getQuantity());
 			preparedStatement.setInt(5, product.getIva());
-			preparedStatement.setString(7, product.getRicondizionato());
-			preparedStatement.setInt(8, product.getSconto());
+			preparedStatement.setString(6, product.getRicondizionato());
+			preparedStatement.setInt(7, product.getSconto());
 
 			preparedStatement.executeUpdate();
 

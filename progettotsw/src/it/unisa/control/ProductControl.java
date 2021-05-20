@@ -81,12 +81,17 @@ public class ProductControl extends HttpServlet {
 					String description = request.getParameter("description");
 					int price = Integer.parseInt(request.getParameter("price"));
 					int quantity = Integer.parseInt(request.getParameter("quantity"));
-
+					int sconto= Integer.parseInt(request.getParameter("sconto"));
+					int iva = Integer.parseInt(request.getParameter("iva"));
+					String ricondizionato= request.getParameter("ricondizionato");
 					ProductBean bean = new ProductBean();
 					bean.setName(name);
 					bean.setDescription(description);
 					bean.setPrice(price);
 					bean.setQuantity(quantity);
+					bean.setIva(iva);
+					bean.setRicondizionato(ricondizionato);
+					bean.setSconto(sconto);
 					model.doSave(bean);
 				}
 				else if (action.equalsIgnoreCase("checkout")) {
@@ -134,6 +139,17 @@ public class ProductControl extends HttpServlet {
 					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Listacomposizione.jsp");
 					dispatcher.forward(request, response);
 				}
+				else if(action.equalsIgnoreCase("vediadmin")) {
+					UserBean user= (UserBean) request.getSession().getAttribute("currentSessionUser");
+					request.getSession().setAttribute("currentSessionUser", user);
+					if(user==null)
+					{System.out.println("sono nullo");}
+					String sort = request.getParameter("sort");
+					request.removeAttribute("products");
+					request.setAttribute("products", model.doRetrieveAll(sort));
+					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin.jsp");
+					dispatcher.forward(request, response);
+				}
 			}			
 		} catch (SQLException e) {
 			System.out.println("Error:" + e.getMessage());
@@ -150,7 +166,7 @@ public class ProductControl extends HttpServlet {
 		} catch (SQLException e) {
 			System.out.println("Error:" + e.getMessage());
 		}
-
+		
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/ProductView.jsp");
 		dispatcher.forward(request, response);
 	}

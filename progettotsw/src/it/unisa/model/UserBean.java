@@ -11,7 +11,13 @@ public class UserBean {
     private int numerocarta;
     private int cvv;
     private String intestatario;
+    private boolean admin=false;
     
+    public boolean isAdmin() {
+		return admin;
+	}public void setAdmin(boolean admin) {
+		this.admin = admin;
+	}
 	public String getIntestatario() {
 		return intestatario;
 	}public void setIntestatario(String intestatario) {
