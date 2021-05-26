@@ -19,17 +19,14 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<link href="ProductStyle.css" rel="stylesheet" type="text/css">
+	<link href="NewFile.css" rel="stylesheet" type="text/css">
 	<title>Storage DS/BF</title>
 </head>
 
 <body>
-	<h2>Products</h2>
-	<a href="product?action=vediordini">ORDINI</a>
-	<a href="product?action=vedicarrello">CART</a>
-	<a href="LoginPage.jsp">LOGIN</a>
-	<a href="Paginadiregistrazione.jsp">REGISTRAZIONE</a>
-	<a href="product?action=vediadmin">ADMIN</a>
+<jsp:include page="header.jsp"/>
+	<jsp:include page="menu.jsp"/>
+	
 	<table border="1">
 		<tr>
 			<th>Codice <a href="product?sort=code">Sort</a></th>
@@ -66,5 +63,6 @@
 			}
 		%>
 	</table>
+	<jsp:include page="footer.jsp"/>
 </body>
 </html>

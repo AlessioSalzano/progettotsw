@@ -13,11 +13,12 @@
 
 <!DOCTYPE html>
 <html>
-
+<jsp:include page="header.jsp"/>
+	<jsp:include page="menu.jsp"/>
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<link href="ProductStyle.css" rel="stylesheet" type="text/css">
+	<link href="NewFile.css" rel="stylesheet" type="text/css">
 	<title>Storage DS/BF</title>
 </head>
 
@@ -61,6 +62,6 @@
 		<%}%>
 		<%}%>
 	</table>	
-		
+	<jsp:include page="footer.jsp"/>
 </body>
 </html>

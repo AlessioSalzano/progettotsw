@@ -4,14 +4,12 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
 <link href="NewFile.css" rel="stylesheet" type="text/css">
+<title>Insert title here</title>
 </head>
 <body>
-<jsp:include page="header.jsp"/>
-	<jsp:include page="menu.jsp"/>
+<header>CELLULARTIST <br>
+<img src="palettew.PNG" width="80px" height="80px"></header>
 
-<h1>GRAZIE PER L'ACQUISTO!</h1>
 </body>
-	<jsp:include page="footer.jsp"/>
 </html>

@@ -14,11 +14,13 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<link href="ProductStyle.css" rel="stylesheet" type="text/css">
+	<link href="NewFile.css" rel="stylesheet" type="text/css">
 	<title>Lista Ordini</title>
 </head>
 
 <body>
+<jsp:include page="header.jsp"/>
+	<jsp:include page="menu.jsp"/>
 <h2>ORDINI</h2>
 	
 		<table border="1">
@@ -47,6 +49,6 @@
 		
 	
 		<% }	%>	
-
+	<jsp:include page="footer.jsp"/>
 </body>
 </html>

@@ -10,8 +10,12 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Register Page</title>
+<link href="NewFile.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+<jsp:include page="header.jsp"/>
+	<jsp:include page="menu.jsp"/>
+
 <%if(currentUser==null){ %>
 <form action="Register">
 			INSERISCI IL TUO USERNAME:
@@ -45,5 +49,6 @@
 		<% if(currentUser!=null)  { %>
 <h1>HAI GIA EFFETTUATO IL LOGIN</h1>
 		<%	}%>
+	<jsp:include page="footer.jsp"/>
 </body>
 </html>

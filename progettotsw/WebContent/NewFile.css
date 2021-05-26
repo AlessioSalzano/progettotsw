@@ -1,0 +1,95 @@
+@CHARSET "UTF-8";
+
+
+    img {
+        left: 10px;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    body {
+
+      background-color: #FFFFFF;
+      height: 100%;
+      width: 400px auto;
+      text-align: center;
+      font-family : Verdana, Helvetica, sans-serif;
+
+    }
+
+
+    h1, h2 {
+        text-align: center;
+        color: #12111;
+        margin: 10px;
+    }
+
+    h3{
+        font-weight: bold;
+        color: black;
+
+    }
+
+
+    table {
+        margin: 40px;
+        width: 500px auto;
+        text-align: center;
+        margin: 10px auto;
+    }
+
+    table, th, td {
+        text-align: center;
+        border: 2px solid #2c3d41;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 5px;
+    }
+
+    label {
+        font-weight: bolder;
+    }
+
+    form input[type=text], form input[type=number], form input[type=password],
+        form input[type=date], form input[type=range], form input[type=email],
+        form input[type=url], form input[type=time], form input[list] {
+        width: 400px;
+        font-size: 1em;
+    }
+
+    textarea {
+        width: 500px;
+        height: 60px;
+        font-size: 1em;
+    }
+
+
+    footer{
+        text-color: black;
+        background: #7043fb;
+        margin: 0px auto;
+        line-height: 20px;
+        border-width: 10px;
+
+
+    }
+
+    header{
+        text-color: black;
+        background-color: #ac89b5;
+        margin: 0px auto;
+        color: black;
+        line-height: 20px;
+
+}
+nav{
+        background-color: #75e0e3;
+        line-height: 30px;
+        height: 60px;
+        width: 100%;
+        top:0;
+        left:0;
+
+    }

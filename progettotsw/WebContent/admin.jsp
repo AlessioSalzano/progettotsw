@@ -13,11 +13,14 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<link href="ProductStyle.css" rel="stylesheet" type="text/css">
+	<link href="NewFile.css" rel="stylesheet" type="text/css">
 	<title>Storage DS/BF</title>
 </head>
 
 <body>
+<jsp:include page="header.jsp"/>
+	<jsp:include page="menu.jsp"/>
+	
 	<%if(currentUser==null || !currentUser.isAdmin()){ %>
 	<h1>NON HAI I PERMESSI PER ENTRARE IN QUESTA SEZIONE</h1>
 	<%} %>
@@ -57,8 +60,6 @@
 			}
 		%>
 	</table>
-	
-	<h2>Details</h2>
 	<%
 		if (product != null) {
 	%>
@@ -109,9 +110,64 @@
 
 		<input type="submit" value="Add"><input type="reset" value="Reset">
 	</form>
-		<%
+	<h2>Modifica Prodotti</h2>
+		
+		<form action="product" method="post">
+			<input type="hidden" name="action" value="modificaCC"> 
+			<label for="codiceid">Codice prodotto da modificare: </label><br> 
+			<input name="codiceid" type="text" maxlength="20"  placeholder="inserisci codice a barre"><br> 
+			<label for="ricondizionato">Ricondizionato: </label><br>
+			<textarea name="ricondizionato" maxlength="3" rows="3"  placeholder="inserire se è ricondizionato o no"></textarea><br>
+			<input type="submit" value="submit"><input type="reset" value="Reset">
+		</form>
+		
+		<form action="product" method="post">
+			<input type="hidden" name="action" value="modificaNo"> 
+			<label for="codiceid">Codice prodotto da modificare: </label><br> 
+			<input name="codiceid" type="text" maxlength="20"  placeholder="inserisci codice a barre"><br> 
+			<label for="Nome">Nome:</label><br>
+			<textarea name="Nome" maxlength="45" rows="3"  placeholder="inserire nome prodotto"></textarea><br>
+			<input type="submit" value="submit"><input type="reset" value="Reset">
+		</form>
+		
+		<form action="prodotto" method="post">
+			<input type="hidden" name="action" value="modificaDes"> 
+			<label for="codiceid">Codice prodotto da modificare: </label><br> 
+			<input name="codiceid" type="text" maxlength="20"  placeholder="inserisci codice a barre"><br> 
+			<label for="Descrizione">Descrizione: </label><br>
+			<textarea name="Descrizione" maxlength="100" rows="3" placeholder="inserire descrizione prodotto"></textarea><br>
+			<input type="submit" value="submit"><input type="reset" value="Reset">
+		</form>
+		
+		<form action="product" method="post">
+			<input type="hidden" name="action" value="modificaPrz"> 
+			<label for="IDProdotto">Codice prodotto da modificare: </label><br> 
+			<input name="IDProdotto" type="text" maxlength="20"  placeholder="inserisci codice a barre"><br> 
+			<label for="PrezzoNoIVA">Prezzo senza IVA:</label><br> 
+			<input name="PrezzoNoIVA" type="number" value="0"><br>
+			<input type="submit" value="submit"><input type="reset" value="Reset">
+		</form>
+		
+		<form action="product" method="post">
+			<input type="hidden" name="action" value="modificaSc">
+			<label for="IDProdotto">Codice prodotto da modificare: </label><br> 
+			<input name="IDProdotto" type="text" maxlength="20"  placeholder="inserisci codice a barre"><br>  
+			<label for="Sconto">Sconto: </label><br> 
+			<input name="Sconto" type="number" value="0"><br>
+			<input type="submit" value="submit"><input type="reset" value="Reset">
+		</form>
+		
+		<form action="product" method="post">
+			<input type="hidden" name="action" value="modificaDis"> 
+			<label for="IDProdotto">Codice prodotto da modificare: </label><br> 
+			<input name="IDProdotto" type="text" maxlength="20"  placeholder="inserisci codice a barre"><br> 
+			<label for="Disponibilita">DisponibilitÃ : </label><br> 
+			<input name="Disponibilita" type="number" value="0"><br>
+			<input type="submit" value="submit"><input type="reset" value="Reset">
+		</form>
+			<%
 		}
 	%>
-
+	<jsp:include page="footer.jsp"/>
 </body>
 </html>

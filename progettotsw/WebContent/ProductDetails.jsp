@@ -12,11 +12,13 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<link href="ProductStyle.css" rel="stylesheet" type="text/css">
+	<link href="NewFile.css" rel="stylesheet" type="text/css">
 	<title>DETTAGLI</title>
 </head>
 
 <body>
+<jsp:include page="header.jsp"/>
+	<jsp:include page="menu.jsp"/>
 <h2>Details</h2>
 	<table border="1">
 		<tr>
@@ -36,5 +38,6 @@
 			<td><a href="product?action=addC&id=<%=product.getCode()%>">Add to cart</a></td>
 		</tr>
 	</table>
+	<jsp:include page="footer.jsp"/>
 </body>
 </html>

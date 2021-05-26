@@ -12,10 +12,12 @@
 
 <html>
 	<head>
+	<link href="NewFile.css" rel="stylesheet" type="text/css">
                                 <meta http-equiv="Content-Type" content="text/html; charset=windows-1256">
 		<title>Login Page</title>
 	</head>
-
+<jsp:include page="header.jsp"/>
+	<jsp:include page="menu.jsp"/>
 	<body>
 	<% if(currentUser==null)  { %>
 		<form action="Login">
@@ -34,5 +36,6 @@
 <% if(currentUser!=null)  { %>
 <h1>HAI GIA EFFETTUATO IL LOGIN</h1>
 		<%	}%>
+	<jsp:include page="footer.jsp"/>
 	</body>
 </html>

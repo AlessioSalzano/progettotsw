@@ -4,14 +4,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
 <link href="NewFile.css" rel="stylesheet" type="text/css">
+<title>Insert title here</title>
 </head>
 <body>
-<jsp:include page="header.jsp"/>
-	<jsp:include page="menu.jsp"/>
-
-<h1>GRAZIE PER L'ACQUISTO!</h1>
+<footer>Contatti: salzanoal@gmail.com gbalzano@gmail.com </footer>
 </body>
-	<jsp:include page="footer.jsp"/>
 </html>
