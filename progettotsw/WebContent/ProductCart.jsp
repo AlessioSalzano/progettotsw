@@ -23,10 +23,10 @@
 </head>
 
 <body>
-	 <a href="product">List</a>
+	
 	<% if(cart != null) { %>
 
-		<h2>Cart</h2>
+	
 		<table border="1">
 		<tr>
 			<th>Name</th>

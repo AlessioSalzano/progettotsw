@@ -150,8 +150,99 @@ public class ProductControl extends HttpServlet {
 					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin.jsp");
 					dispatcher.forward(request, response);
 				}
-			}			
-		} catch (SQLException e) {
+				
+				else if (action.equalsIgnoreCase("modificaid")) {
+					int id=Integer.parseInt(request.getParameter("codiceid"));
+					String codiceCat = request.getParameter("ricondizionato");
+					model.doUpdate(id,codiceCat,"ricondizionato");
+					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin.jsp");
+					dispatcher.forward(request, response);
+					return;
+				}
+				else if (action.equalsIgnoreCase("modificaSconto")) {
+					int id=Integer.parseInt(request.getParameter("codiceid"));
+					String sconto = request.getParameter("Sconto");
+					model.doUpdate(id,sconto,"Sconto");
+					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin.jsp");
+					dispatcher.forward(request, response);
+					return;
+				}
+				else if (action.equalsIgnoreCase("modificaDisponibilita")) {
+					int id=Integer.parseInt(request.getParameter("codiceid"));
+					String quantity = (request.getParameter("Disponibilita"));
+					model.doUpdate(id,quantity,"quantity");
+					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin.jsp");
+					dispatcher.forward(request, response);
+					return;
+				}
+				else if (action.equalsIgnoreCase("modificaDescrizione")) {
+					int id=Integer.parseInt(request.getParameter("codiceid"));
+					String description = request.getParameter("Descrizione");
+					
+					model.doUpdate(id,description,"description");
+					
+					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin.jsp");
+					dispatcher.forward(request, response);
+					return;
+				}
+				
+				else if (action.equalsIgnoreCase("modificaPrezzo")) {
+					int id=Integer.parseInt(request.getParameter("codiceid"));
+					String price =request.getParameter("PrezzoNoIVA");
+					model.doUpdate(id,price,"price");
+					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin.jsp");
+					dispatcher.forward(request, response);
+					return;
+				}
+				else if (action.equalsIgnoreCase("modificaNome")) {
+					int id=Integer.parseInt(request.getParameter("codiceid"));
+					String name = request.getParameter("Nome");
+					model.doUpdate(id,name,"name");
+					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin.jsp");
+					dispatcher.forward(request, response);
+					return;
+				}
+				else if(action.equalsIgnoreCase("tuttigliordini")) {
+					
+					ListaOrdiniBean lista=OrdiniDAO.doRetrieveAllOrd();
+					request.setAttribute("tuttiordini", lista);
+					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/tuttigliordini.jsp");
+					dispatcher.forward(request, response);
+				}
+				else if(action.equalsIgnoreCase("ricercauser")) {
+                    String user =request.getParameter("username");
+
+                    try {
+                        request.removeAttribute("tuttioridni");
+                        request.setAttribute("tuttiordini", OrdiniDAO.doRetrieveByKey2(user,null,null));
+                    } catch (SQLException e) {
+                        System.out.println("Error:" + e.getMessage());
+                    } 
+                    RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/tuttigliordini.jsp");
+                    dispatcher.forward(request, response);
+                    return;
+                }
+                else if(action.equalsIgnoreCase("ricercaData")) {
+                    String d1= request.getParameter("DataOrdine1");
+                    String d2 = request.getParameter("DataOrdine2");
+
+                    try {
+                        request.removeAttribute("tuttiordini");
+                        request.setAttribute("tuttiordini", OrdiniDAO.doRetrieveByKey2(null,d1,d2));
+                    } catch (SQLException e) {
+                        System.out.println("Error:" + e.getMessage());
+                    }
+
+                    RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/tuttigliordini.jsp");
+                    dispatcher.forward(request, response);
+                    return;
+                }
+				
+			
+			}
+			
+		}
+		 catch (SQLException e) {
 			System.out.println("Error:" + e.getMessage());
 		}
 

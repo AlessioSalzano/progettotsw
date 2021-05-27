@@ -4,7 +4,7 @@
 <%
 
 	
-	ListaOrdiniBean lista =(ListaOrdiniBean) request.getAttribute("listaordini");
+	ListaOrdiniBean lista =(ListaOrdiniBean) request.getAttribute("tuttiordini");
 	List<OrdineBean> listaOrdini = lista.getOrdini();
 %>
 
@@ -23,6 +23,21 @@
 	<jsp:include page="menu.jsp"/>
 	
 	<table border="1">
+	<form action="product" method="get">
+                <input type="hidden" name="action" value="ricercauser"> 
+                <label for="username"> USERNAME: </label><br> 
+                <input name="username" type="text" placeholder="inserisci username"><br> 
+                <input type="submit" value="submit"><input type="reset" value="Reset">
+                </form>
+                <br>
+                <form action="product" method="get">
+                <input type="hidden" name="action" value="ricercaData"> 
+                <label for="DataOrdine1">Data inizio: </label><br> 
+                <input name="DataOrdine1" type="text" maxlength="20"  placeholder="inserisci data inizio"><br> 
+                <label for="DataOrdine2">Data fine: </label><br>
+                <input name="DataOrdine2" type="text" maxlength="20"  placeholder="inserisci data fine"><br> 
+                <input type="submit" value="submit"><input type="reset" value="Reset">
+                </form>
 		<tr>
 			<th>Numero Ordine</th>
 			<th>username</th>
@@ -34,7 +49,7 @@
 			String Username;
 			double prezzo=0;
 			Date data;
-		   for(OrdineBean ordine: listaOrdini ) {
+		   for(OrdineBean ordine: listaOrdini) {
 			  Username=ordine.getUsername();
 			  numeroOrdine=ordine.getId();
 			  prezzo=ordine.getPrezzo();

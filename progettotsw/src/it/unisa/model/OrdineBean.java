@@ -1,14 +1,14 @@
 package it.unisa.model;
 
 import java.io.Serializable;
-
+import java.util.Date;
 public class OrdineBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private int id;
 	private String username;
 	private double prezzo;
 	private String stato;
-	
+	private Date data;
 	public OrdineBean() {
 		
 	}
@@ -30,5 +30,10 @@ public class OrdineBean implements Serializable {
 		this.stato = stato;
 	}public void setUsername(String username) {
 		this.username = username;
+	}
+	public Date getData() {
+		return data;
+	}public void setData(Date data) {
+		this.data = data;
 	}
 }

@@ -19,7 +19,6 @@
 </head>
 
 <body>
-<h2>ORDINI</h2>
 	<jsp:include page="header.jsp"/>
 	<jsp:include page="menu.jsp"/>
 		<table border="1">
@@ -62,6 +61,7 @@
 		
 	
 		<% }	%>
+			</table>
 	<jsp:include page="footer.jsp"/>
 </body>
 </html>

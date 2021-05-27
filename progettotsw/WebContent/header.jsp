@@ -8,8 +8,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<header>CELLULARTIST <br>
-<img src="palettew.PNG" width="80px" height="80px"></header>
+<header>
+<img src="logo.png" width="200px" height="100px"></header>
 
 </body>
 </html>

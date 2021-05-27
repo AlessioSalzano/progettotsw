@@ -25,8 +25,8 @@
 	<h1>NON HAI I PERMESSI PER ENTRARE IN QUESTA SEZIONE</h1>
 	<%} %>
 	<%if(currentUser!=null && currentUser.isAdmin()){ %>
-	<h2>Products</h2>
-	<a href="product">HOME</a>
+	<h2>VEDI ELENCO ORDINI: </h2>
+	 <a href="product?action=tuttigliordini"> <button>ELENCO</button></a>
 	<table border="1">
 		<tr>
 			<th>Code <a href="product?sort=code">Sort</a></th>
@@ -113,55 +113,55 @@
 	<h2>Modifica Prodotti</h2>
 		
 		<form action="product" method="post">
-			<input type="hidden" name="action" value="modificaCC"> 
+			<input type="hidden" name="action" value="modificaid"> 
 			<label for="codiceid">Codice prodotto da modificare: </label><br> 
-			<input name="codiceid" type="text" maxlength="20"  placeholder="inserisci codice a barre"><br> 
+			<input name="codiceid" type="text" maxlength="20"  placeholder="inserisci codice"><br> 
 			<label for="ricondizionato">Ricondizionato: </label><br>
-			<textarea name="ricondizionato" maxlength="3" rows="3"  placeholder="inserire se è ricondizionato o no"></textarea><br>
+			<textarea name="ricondizionato" maxlength="2" rows="3"  placeholder="inserire se è ricondizionato o no"></textarea><br>
 			<input type="submit" value="submit"><input type="reset" value="Reset">
 		</form>
 		
 		<form action="product" method="post">
-			<input type="hidden" name="action" value="modificaNo"> 
+			<input type="hidden" name="action" value="modificaNome"> 
 			<label for="codiceid">Codice prodotto da modificare: </label><br> 
-			<input name="codiceid" type="text" maxlength="20"  placeholder="inserisci codice a barre"><br> 
+			<input name="codiceid" type="text" maxlength="20"  placeholder="inserisci codice"><br> 
 			<label for="Nome">Nome:</label><br>
 			<textarea name="Nome" maxlength="45" rows="3"  placeholder="inserire nome prodotto"></textarea><br>
 			<input type="submit" value="submit"><input type="reset" value="Reset">
 		</form>
 		
-		<form action="prodotto" method="post">
-			<input type="hidden" name="action" value="modificaDes"> 
+		<form action="product" method="post">
+			<input type="hidden" name="action" value="modificaDescrizione"> 
 			<label for="codiceid">Codice prodotto da modificare: </label><br> 
-			<input name="codiceid" type="text" maxlength="20"  placeholder="inserisci codice a barre"><br> 
+			<input name="codiceid" type="text" maxlength="20"  placeholder="inserisci codice"><br> 
 			<label for="Descrizione">Descrizione: </label><br>
 			<textarea name="Descrizione" maxlength="100" rows="3" placeholder="inserire descrizione prodotto"></textarea><br>
 			<input type="submit" value="submit"><input type="reset" value="Reset">
 		</form>
 		
 		<form action="product" method="post">
-			<input type="hidden" name="action" value="modificaPrz"> 
-			<label for="IDProdotto">Codice prodotto da modificare: </label><br> 
-			<input name="IDProdotto" type="text" maxlength="20"  placeholder="inserisci codice a barre"><br> 
+			<input type="hidden" name="action" value="modificaPrezzo"> 
+			<label for="codiceid">Codice prodotto da modificare: </label><br> 
+			<input name="codiceid" type="text" maxlength="20"  placeholder="inserisci codice"><br> 
 			<label for="PrezzoNoIVA">Prezzo senza IVA:</label><br> 
 			<input name="PrezzoNoIVA" type="number" value="0"><br>
 			<input type="submit" value="submit"><input type="reset" value="Reset">
 		</form>
 		
 		<form action="product" method="post">
-			<input type="hidden" name="action" value="modificaSc">
-			<label for="IDProdotto">Codice prodotto da modificare: </label><br> 
-			<input name="IDProdotto" type="text" maxlength="20"  placeholder="inserisci codice a barre"><br>  
+			<input type="hidden" name="action" value="modificaSconto">
+			<label for="codiceid">Codice prodotto da modificare: </label><br> 
+			<input name="codiceid" type="text" maxlength="20"  placeholder="inserisci codice"><br>  
 			<label for="Sconto">Sconto: </label><br> 
 			<input name="Sconto" type="number" value="0"><br>
 			<input type="submit" value="submit"><input type="reset" value="Reset">
 		</form>
 		
 		<form action="product" method="post">
-			<input type="hidden" name="action" value="modificaDis"> 
-			<label for="IDProdotto">Codice prodotto da modificare: </label><br> 
-			<input name="IDProdotto" type="text" maxlength="20"  placeholder="inserisci codice a barre"><br> 
-			<label for="Disponibilita">DisponibilitÃ : </label><br> 
+			<input type="hidden" name="action" value="modificaDisponibilita"> 
+			<label for="codiceid">Codice prodotto da modificare: </label><br> 
+			<input name="codiceid" type="text" maxlength="20"  placeholder="inserisci codice"><br> 
+			<label for="Disponibilita">Disponibilita : </label><br> 
 			<input name="Disponibilita" type="number" value="0"><br>
 			<input type="submit" value="submit"><input type="reset" value="Reset">
 		</form>

@@ -9,6 +9,7 @@
 </head>
 <body>
 <nav>
+ 	 <a href="product">HOME</a>
 	<a href="product?action=vediordini">ORDINI</a>
 	<a href="product?action=vedicarrello">CART</a>
 	<a href="LoginPage.jsp">LOGIN</a>

@@ -1,6 +1,7 @@
 package it.unisa.model;
 
 import java.sql.Connection;
+import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,7 +16,7 @@ import javax.sql.DataSource;
 public class ProductModelDS implements ProductModel {
 
 	private static DataSource ds;
-
+	static Date x=new Date(System.currentTimeMillis());
 	static {
 		try {
 			Context initCtx = new InitialContext();
@@ -203,10 +204,14 @@ public class ProductModelDS implements ProductModel {
 		}
 	public synchronized void doSave(UserBean user, Cart cart)throws SQLException {
 		double totale=0;
+		int giorno=x.getDate();
+        int mese=x.getMonth();
+        int anno=x.getYear();
+        java.sql.Date DataOrdine = new java.sql.Date(anno, mese, giorno);
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		String sql=  "INSERT INTO " + "ordine"
-				+ " (numordine, USERNAME, PREZZO) VALUES (?, ?, ?)";
+				+ " (numordine, USERNAME, PREZZO, data) VALUES (?, ?, ?, ?)";
 		String sss= "SELECT MAX(numordine) FROM ordine";
 		
 		String aaa=  "INSERT INTO " + "composizione"
@@ -228,6 +233,7 @@ public class ProductModelDS implements ProductModel {
 				preparedStatement.setInt(1,i);
 				preparedStatement.setString(2, user.getUsername());
 				preparedStatement.setDouble(3,totale);
+				preparedStatement.setDate(4,DataOrdine);
 				preparedStatement.executeUpdate();
 				preparedStatement.close();
 				
@@ -258,10 +264,40 @@ public class ProductModelDS implements ProductModel {
 			
 		}
 		
-	public synchronized void doSave(ProductCart productcart, int codice)throws SQLException {
-		
-	}
+
+	public synchronized void doUpdate(int id,String x, String set) throws SQLException {
+
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+
+        String insertSQL = "UPDATE  product"
+                + " SET "+set+"= ?  WHERE code= '"+id+"'";
+
+
+        try {
+            connection = ds.getConnection();
+            preparedStatement = connection.prepareStatement(insertSQL);
+
+            if ((set.equals("ricondizionato"))||(set.equals("name"))||(set.equals("description")))
+                preparedStatement.setString(1, x);
+
+            if((set.equals("price"))||(set.equals("quantity"))||(set.equals("Sconto"))) preparedStatement.setInt(1, Integer.parseInt(x));
+
+            preparedStatement.executeUpdate();
+
+            connection.commit();
+        } finally {
+            try {
+                if (preparedStatement != null)
+                    preparedStatement.close();
+            } finally {
+                if (connection != null)
+                    connection.close();
+            }
+        }
+    }
+
 	
-	}
+}
 
 
