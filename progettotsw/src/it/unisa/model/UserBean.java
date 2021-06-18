@@ -1,7 +1,7 @@
 package it.unisa.model;
 
 public class UserBean {
-	
+	private String email;
     private String username;
     private String password;
     private String firstName;
@@ -17,6 +17,11 @@ public class UserBean {
 		return admin;
 	}public void setAdmin(boolean admin) {
 		this.admin = admin;
+	}
+	public String getEmail() {
+		return email;
+	}public void setEmail(String email) {
+		this.email = email;
 	}
 	public String getIntestatario() {
 		return intestatario;

@@ -19,25 +19,18 @@
 <body>
 <jsp:include page="header.jsp"/>
 	<jsp:include page="menu.jsp"/>
-<h2>Details</h2>
-	<table border="1">
-		<tr>
-			<th>Codice</th>
-			<th>Nome</th>
-			<th>Descrizione</th>
-			<th>Prezzo</th>
-			<th>Quantità</th>
-			<th>Azione</th>
-		</tr>
-		<tr>
-			<td><%=product.getCode()%></td>
-			<td><%=product.getName()%></td>
-			<td><%=product.getDescription()%></td>
-			<td><%=product.getPrice()%></td>
-			<td><%=product.getQuantity()%></td>
-			<td><a href="product?action=addC&id=<%=product.getCode()%>">Add to cart</a></td>
-		</tr>
-	</table>
-	<jsp:include page="footer.jsp"/>
+<h2>DETTAGLI PRODOTTO</h2>
+<a class="mn" href="product?action=addC&id=<%=product.getCode()%>">ACQUISTA</a></br>
+		<img src="./getPicture?id=<%=product.getCode()%>" width="300" height="300"> </br>
+			<p class="descr">CODICE PRODOTTO: <%=product.getCode()%></br> 
+			NOME PRODOTTO: <%=product.getName()%></br>
+			DESCRIZIONE PRODOTTO: <%=product.getDescription()%></br>
+			PREZZO DEL PRODOTTO: <%=product.getPrice()%></br>
+			SCONTO SUL PRODOTTO: <%=product.getSconto()%></br>
+			IVA DEL PRODOTTO: <%=product.getIva()%></br>
+			RICONDIZIONATO: <%=product.getRicondizionato()%></br>
+			
+	</p>
+</br></br>	<jsp:include page="footer.jsp"/>
 </body>
 </html>

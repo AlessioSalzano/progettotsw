@@ -1,6 +1,37 @@
 @CHARSET "UTF-8";
 
-
+* {
+ 	 box-sizing: border-box;
+	}
+	p.descr{
+	font-weight:bold;
+	}
+	
+	a.na:link, a.na:visited {
+	font-size:25px;
+	  background-color: #75e0e3;
+	  color: black;
+	  padding: 10px 15px;
+	  text-align: center;
+	  text-decoration: none;
+	  display: inline-block;
+	  border-radius: 15px;
+	}
+	
+		a.mn:link, a.mn:visited {
+	  background-color:  #7043fb;
+	  color: black;
+	  padding: 10px 15px;
+	  text-align: center;
+	  text-decoration: none;
+	  display: inline-block;
+	  border-radius: 15px;
+	}
+	
+	a:hover, a:active {
+  		background-color: #242850;
+}
+	
     img {
         left: 10px;
         margin: 0px;
@@ -70,13 +101,13 @@
         text-color: black;
         background: #7043fb;
         margin: 0px auto;
-        line-height: 20px;
+        line-height: 50px;
         border-width: 10px;
 
 
     }
 
-    header{
+header{
         text-color: black;
         background-color: #fcebfe;
         margin: 0px auto;
@@ -93,3 +124,51 @@ nav{
         left:0;
 
     }
+    /* Create three unequal columns that floats next to each other */
+	.column {
+	  float: left;
+	  padding: 10px;
+	  
+	}
+	
+	/* Left and right column */
+	.column.side {
+	  width: 33%;
+	  padding: 10px;
+	}
+	
+	/* Middle column */
+	.column.middle {
+	  width: 33%;
+	  padding: 10px;
+	}
+	
+	.row:after {
+	  content: "";
+	  display: table;
+	  clear: both;
+	}
+	
+		@media only screen and (max-width: 1000px) {  /* for cellphones */
+	
+	.column.side {
+    	width: 50%;
+ 	 }
+	
+	.column.middle{
+		width: 50%;
+	}
+	
+	@media only screen and (max-width: 600px) {
+		.column.side {
+	    	width: 100%;
+	 	 	
+	 	 }
+	 	 
+	 	 .column.middle{
+	    	width: 100%;
+	 	 	
+	 	 }
+		
+}
+	

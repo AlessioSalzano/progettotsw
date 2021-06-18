@@ -9,12 +9,12 @@
 </head>
 <body>
 <nav>
- 	 <a href="product">HOME</a>
-	<a href="product?action=vediordini">ORDINI</a>
-	<a href="product?action=vedicarrello">CART</a>
-	<a href="LoginPage.jsp">LOGIN</a>
-	<a href="Paginadiregistrazione.jsp">REGISTRAZIONE</a>
-	<a href="product?action=vediadmin">ADMIN</a>
+ 	 <a class="na" href="product">HOME</a>
+	<a class="na" href="product?action=vediordini">ORDINI</a>
+	<a class="na" href="product?action=vedicarrello">CART</a>
+	<a class="na" href="LoginPage.jsp">LOGIN</a>
+	<a class="na" href="Paginadiregistrazione.jsp">REGISTRAZIONE</a>
+	<a class="na" href="product?action=vediadmin">ADMIN</a>
 	</nav>
 </body>
 </html>

@@ -26,43 +26,37 @@
 <body>
 <jsp:include page="header.jsp"/>
 	<jsp:include page="menu.jsp"/>
-	
-	<table border="1">
-		<tr>
-			<th>Codice <a href="product?sort=code">Sort</a></th>
-			<th>Nome<a href="product?sort=name">Sort</a></th>
-			<th>Prezzo</th>
-			<th>Quantità</th>
-			<th>Descrizione <a href="product?sort=description">Sort</a></th>
-			<th>Azione</th>
-		</tr>
-		<%
+
+		<% int j=0;
+		 String[] nomi= {"column side","column middle","column side"};
 			if (products != null && products.size() != 0) {
 				Iterator<?> it = products.iterator();
+				ArrayList<ProductBean> ls=new ArrayList();
 				while (it.hasNext()) {
 					ProductBean bean = (ProductBean) it.next();
-					%>
-		<tr>
-			<td><%=bean.getCode()%></td>
-			<td><%=bean.getName()%></td>
-			<td><%=bean.getPrice()%></td>
-			<td><%=bean.getQuantity()%></td>
-			<td><%=bean.getDescription()%></td>
-			<td><a href="product?action=read&id=<%=bean.getCode()%>" target=_blank>Details</a><br>
-				<a href="product?action=addC&id=<%=bean.getCode()%>">Add to cart</a>
-				</td>
-		</tr>
-		<%
-				}
-			} else {
-		%>
-		<tr>
-			<td colspan="6">No products available</td>
-		</tr>
-		<%
-			}
-		%>
-	</table>
+					ls.add(bean);} %>
+				  <div class= "row">
+				<% for(int i=0;i<ls.size();i++){%>
+				 <div class="<%=nomi[j]%>">
+		 <br> <p class="descr"> <%=ls.get(i).getName()%> </p>
+			<img src="./getPicture?id=<%=ls.get(i).getCode()%>" width="300" height="300"> </br>
+			PREZZO: <%=ls.get(i).getPrice()%>  </br>
+			<a class="mn" href="product?action=read&id=<%=ls.get(i).getCode()%>" target=_blank>DETTAGLI</a> 
+				<a class="mn" href="product?action=addC&id=<%=ls.get(i).getCode()%>">ACQUISTA</a> </br>
+				</div>
+		
+		 <%
+        if(j<2) j++;
+            else j=0;
+
+                }  %>
+				  </div>
+				  <%
+            } 
+        %>
+       
+		
+		
 	<jsp:include page="footer.jsp"/>
 </body>
 </html>

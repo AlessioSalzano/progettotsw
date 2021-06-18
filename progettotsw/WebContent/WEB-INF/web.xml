@@ -18,4 +18,20 @@
     <servlet-name>ProductControl</servlet-name>
     <url-pattern>/product</url-pattern>
   </servlet-mapping>
+   <servlet>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>it.unisa.control.LoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/login</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <servlet-name>Register</servlet-name>
+    <servlet-class>it.unisa.control.Register</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Register</servlet-name>
+    <url-pattern>/register</url-pattern>
+  </servlet-mapping>
 </web-app>

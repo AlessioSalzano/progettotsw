@@ -123,7 +123,7 @@ return bean;
 
 
         String insertSQL = "INSERT INTO " + "cliente"
-                + " (username, nome, cognome, indirizzo, password, cvv, numcarta, intestatario) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+                + " (username, nome, cognome, indirizzo, password, cvv, numcarta, intestatario, email) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try {
         	
@@ -136,7 +136,7 @@ return bean;
             preparedStatement.setInt(6, user1.getCvv());
             preparedStatement.setInt(7, user1.getNumerocarta());
             preparedStatement.setString(8, user1.getIntestatario());
-
+            preparedStatement.setString(9, user1.getEmail());
             preparedStatement.executeUpdate();
             
            

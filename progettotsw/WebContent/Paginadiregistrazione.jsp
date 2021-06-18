@@ -18,6 +18,8 @@
 
 <%if(currentUser==null){ %>
 <form action="Register">
+			INSERISCI L'EMAIL:
+			<input type="text" name="em"/><br>
 			INSERISCI IL TUO USERNAME:
 			<input type="text" name="us"/><br>
 			
