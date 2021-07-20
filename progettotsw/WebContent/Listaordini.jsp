@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page contentType="text/html; charset=UTF-8" import="java.util.*,it.unisa.model.ProductBean,it.unisa.model.*"%>
+<%@ page  import="java.util.*,it.unisa.model.ProductBean,it.unisa.model.*"%>
 <%
 
 	
 	ListaOrdiniBean lista =(ListaOrdiniBean) request.getAttribute("listaordini");
 	List<OrdineBean> listaOrdini = lista.getOrdini();
+	 UserBean currentUser = (UserBean) session.getAttribute("currentSessionUser");
 %>
 
 <!DOCTYPE html>
@@ -20,15 +21,22 @@
 
 <body>
 <jsp:include page="header.jsp"/>
+	<% if (currentUser==null){%>
 	<jsp:include page="menu.jsp"/>
+<% } %>
+<% if (currentUser!=null && !currentUser.isAdmin()){%>
+	<jsp:include page="menu2.jsp"/>
+<% } %>
+<%if(currentUser!=null && currentUser.isAdmin()){ %>
+	<jsp:include page="menu3.jsp"/>
+<% } %>
 	
-	<table border="1">
+	<table border="1" id="customers">
 		<tr>
-			<th>Numero Ordine</th>
-			<th>username</th>
-			<th>prezzo</th>
-			<th>data</th>
-			<th>dettagli</th>
+			<th>NUMERO ORDINE</th>
+			<th>PREZZO</th>
+			<th>DATA</th>
+			<th>DETTAGLI</th>
 		</tr>
 		<% 	int numeroOrdine=0;
 			String Username;
@@ -43,8 +51,7 @@
 		<tr>
 		
 			<td><%=numeroOrdine%></td>
-			<td><%=Username%></td>
-			<td><%=prezzo%></td>
+			<td><%=prezzo%>0 € </td>
 			<td><%=data%></td>
 			<td><a href="product?action=dettagliordine&codice=<%=numeroOrdine%>">dettagli</a></td>
 				

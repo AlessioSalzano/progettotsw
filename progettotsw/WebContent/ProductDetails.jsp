@@ -4,11 +4,12 @@
 <%
 	Collection<?> products = (Collection<?>) request.getAttribute("products");
 	ProductBean product = (ProductBean) request.getAttribute("product");
+	UserBean currentUser = (UserBean) (session.getAttribute("currentSessionUser"));
 %>
 
 <!DOCTYPE html>
 <html>
-<%@ page contentType="text/html; charset=UTF-8" import="java.util.*,it.unisa.model.ProductBean,it.unisa.model.Cart"%>
+<%@ page contentType="text/html; charset=UTF-8" import="java.util.*,it.unisa.model.*"%>
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -18,14 +19,22 @@
 
 <body>
 <jsp:include page="header.jsp"/>
+<% if (currentUser==null){%>
 	<jsp:include page="menu.jsp"/>
+<% } %>
+<% if (currentUser!=null && !currentUser.isAdmin()){%>
+	<jsp:include page="menu2.jsp"/>
+<% } %>
+<%if(currentUser!=null && currentUser.isAdmin()){ %>
+	<jsp:include page="menu3.jsp"/>
+<% } %>
 <h2>DETTAGLI PRODOTTO</h2>
 <a class="mn" href="product?action=addC&id=<%=product.getCode()%>">ACQUISTA</a></br>
 		<img src="./getPicture?id=<%=product.getCode()%>" width="300" height="300"> </br>
 			<p class="descr">CODICE PRODOTTO: <%=product.getCode()%></br> 
 			NOME PRODOTTO: <%=product.getName()%></br>
 			DESCRIZIONE PRODOTTO: <%=product.getDescription()%></br>
-			PREZZO DEL PRODOTTO: <%=product.getPrice()%></br>
+			PREZZO DEL PRODOTTO: <%=product.getPrice()%> € </br>
 			SCONTO SUL PRODOTTO: <%=product.getSconto()%></br>
 			IVA DEL PRODOTTO: <%=product.getIva()%></br>
 			RICONDIZIONATO: <%=product.getRicondizionato()%></br>

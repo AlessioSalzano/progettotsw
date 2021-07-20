@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page contentType="text/html; charset=UTF-8" import="java.util.*,it.unisa.model.ProductBean,it.unisa.model.*"%>
+<%@ page  import="java.util.*,it.unisa.model.ProductBean,it.unisa.model.*"%>
 <%
 
 	
 	ListaOrdiniBean lista =(ListaOrdiniBean) request.getAttribute("tuttiordini");
 	List<OrdineBean> listaOrdini = lista.getOrdini();
+	UserBean currentUser = (UserBean) (session.getAttribute("currentSessionUser"));
 %>
 
 <!DOCTYPE html>
@@ -20,9 +21,20 @@
 
 <body>
 <jsp:include page="header.jsp"/>
+	<% if (currentUser==null){%>
 	<jsp:include page="menu.jsp"/>
-	
-	<table border="1">
+<% } %>
+<% if (currentUser!=null && !currentUser.isAdmin()){%>
+	<jsp:include page="menu2.jsp"/>
+<% } %>
+<%if(currentUser!=null && currentUser.isAdmin()){ %>
+	<jsp:include page="menu3.jsp"/>
+<% } %>
+		<%if(currentUser==null || !currentUser.isAdmin()){ %>
+	<h1>NON HAI I PERMESSI PER ENTRARE IN QUESTA SEZIONE</h1>
+	<%} %>
+	<% if (currentUser!=null) {%>
+	<table border="1" id="customers">
 	<form action="product" method="get">
                 <input type="hidden" name="action" value="ricercauser"> 
                 <label for="username"> USERNAME: </label><br> 
@@ -59,13 +71,16 @@
 		
 			<td><%=numeroOrdine%></td>
 			<td><%=Username%></td>
-			<td><%=prezzo%></td>
+			<td><%=prezzo%> € </td>
 			<td><%=data%></td>
 			<td><a href="product?action=dettagliordine&codice=<%=numeroOrdine%>">dettagli</a></td>
 				
 		</tr>
 		
 		<% }	%>	
+		<% }%>
+		
+
 		</table>
 	<jsp:include page="footer.jsp"/>
 </body>

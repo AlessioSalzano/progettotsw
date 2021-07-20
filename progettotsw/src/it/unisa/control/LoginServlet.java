@@ -28,7 +28,7 @@ try
 {	    
 
      UserBean user = new UserBean();
-     user.setUserName(request.getParameter("un"));
+     user.setEmail(request.getParameter("un"));
      user.setPassword(request.getParameter("pw"));
      System.out.println("QUI 1");
      user = UserDAO.doRetrieve(user);

@@ -102,8 +102,9 @@ public class ProductControl extends HttpServlet {
 						
 						model.doUpdate(beancart);
 						int i=beancart.getNumProduct();
-						for(int x=1;x<i;i++) {
+						for(int x=0;x<i;i++) {
 							cart.deleteProduct(beancart);
+							
 						}
 						
 					}
@@ -151,56 +152,81 @@ public class ProductControl extends HttpServlet {
 					dispatcher.forward(request, response);
 				}
 				
-				else if (action.equalsIgnoreCase("modificaid")) {
-					int id=Integer.parseInt(request.getParameter("codiceid"));
-					String codiceCat = request.getParameter("ricondizionato");
-					model.doUpdate(id,codiceCat,"ricondizionato");
-					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin.jsp");
-					dispatcher.forward(request, response);
-					return;
-				}
-				else if (action.equalsIgnoreCase("modificaSconto")) {
-					int id=Integer.parseInt(request.getParameter("codiceid"));
-					String sconto = request.getParameter("Sconto");
-					model.doUpdate(id,sconto,"Sconto");
-					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin.jsp");
-					dispatcher.forward(request, response);
-					return;
-				}
-				else if (action.equalsIgnoreCase("modificaDisponibilita")) {
-					int id=Integer.parseInt(request.getParameter("codiceid"));
-					String quantity = (request.getParameter("Disponibilita"));
-					model.doUpdate(id,quantity,"quantity");
-					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin.jsp");
-					dispatcher.forward(request, response);
-					return;
-				}
-				else if (action.equalsIgnoreCase("modificaDescrizione")) {
-					int id=Integer.parseInt(request.getParameter("codiceid"));
-					String description = request.getParameter("Descrizione");
+				else if(action.equalsIgnoreCase("modifica")) {
+					if(request.getParameter("parametro").equalsIgnoreCase("name")) {
+						String rec=request.getParameter("parametro");
 					
-					model.doUpdate(id,description,"description");
+						String nome= request.getParameter("valore");
+						int codice= Integer.parseInt(request.getParameter("codice"));
+						model.doUpdateString(codice,nome,rec);
+						RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin.jsp");
+						dispatcher.forward(request, response);
+					}
+					if(request.getParameter("parametro").equalsIgnoreCase("description")) {
+						String rec=request.getParameter("parametro");
+						
+						String nome= request.getParameter("valore");
+						int codice= Integer.parseInt(request.getParameter("codice"));
+						model.doUpdateString(codice,nome,rec);
+						RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin.jsp");
+						dispatcher.forward(request, response);
+					}
+					if(request.getParameter("parametro").equalsIgnoreCase("price")) {
+						String rec=request.getParameter("parametro");
+	
+						String nome= request.getParameter("valore");
+						int codice= Integer.parseInt(request.getParameter("codice"));
+						model.doUpdateString(codice,nome,rec);
+						RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin.jsp");
+						dispatcher.forward(request, response);
+					}
+					if(request.getParameter("parametro").equalsIgnoreCase("iva")) {
+						String rec=request.getParameter("parametro");
+						
+						String nome= request.getParameter("valore");
+						int codice= Integer.parseInt(request.getParameter("codice"));
+						model.doUpdateString(codice,nome,rec);
+						RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin.jsp");
+						dispatcher.forward(request, response);
+					}
+					if(request.getParameter("parametro").equalsIgnoreCase("sconto")) {
+						String rec=request.getParameter("parametro");
+						
+						String nome= request.getParameter("valore");
+						int codice= Integer.parseInt(request.getParameter("codice"));
+						model.doUpdateString(codice,nome,rec);
+						RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin.jsp");
+						dispatcher.forward(request, response);
+					}
+					if(request.getParameter("parametro").equalsIgnoreCase("quantity")) {
+						String rec=request.getParameter("parametro");
+						
+						String nome= request.getParameter("valore");
+						int codice= Integer.parseInt(request.getParameter("codice"));
+						model.doUpdateString(codice,nome,rec);
+						RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin.jsp");
+						dispatcher.forward(request, response);
+					}
+					if(request.getParameter("parametro").equalsIgnoreCase("ricondizionato")) {
+						String rec=request.getParameter("parametro");
+						
+						String nome= request.getParameter("valore");
+						int codice= Integer.parseInt(request.getParameter("codice"));
+						model.doUpdateString(codice,nome,rec);
+						RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin.jsp");
+						dispatcher.forward(request, response);
+					}
+					if(request.getParameter("parametro").equalsIgnoreCase("code")) {
+						String rec=request.getParameter("parametro");
+						
+						String nome= request.getParameter("valore");
+						int codice= Integer.parseInt(request.getParameter("codice"));
+						model.doUpdateString(codice,nome,rec);
+						RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin.jsp");
+						dispatcher.forward(request, response);
+					}
 					
-					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin.jsp");
-					dispatcher.forward(request, response);
-					return;
-				}
-				
-				else if (action.equalsIgnoreCase("modificaPrezzo")) {
-					int id=Integer.parseInt(request.getParameter("codiceid"));
-					String price =request.getParameter("PrezzoNoIVA");
-					model.doUpdate(id,price,"price");
-					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin.jsp");
-					dispatcher.forward(request, response);
-					return;
-				}
-				else if (action.equalsIgnoreCase("modificaNome")) {
-					int id=Integer.parseInt(request.getParameter("codiceid"));
-					String name = request.getParameter("Nome");
-					model.doUpdate(id,name,"name");
-					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin.jsp");
-					dispatcher.forward(request, response);
-					return;
+					
 				}
 				else if(action.equalsIgnoreCase("tuttigliordini")) {
 					

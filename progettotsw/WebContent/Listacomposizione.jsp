@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page contentType="text/html; charset=UTF-8" import="java.util.*,it.unisa.model.ProductBean,it.unisa.model.*"%>
+<%@ page  import="java.util.*,it.unisa.model.ProductBean,it.unisa.model.*"%>
 <%
 
 
 	ListaComposizione lista =(ListaComposizione) request.getAttribute("listacomposizione");
 	List<ComposizioneBean> listacomposizione = lista.getOrdini();
+	UserBean currentUser = (UserBean) session.getAttribute("currentSessionUser");
 %>
 
 <!DOCTYPE html>
@@ -20,7 +21,15 @@
 
 <body>
 	<jsp:include page="header.jsp"/>
+	<% if (currentUser==null){%>
 	<jsp:include page="menu.jsp"/>
+<% } %>
+<% if (currentUser!=null && !currentUser.isAdmin()){%>
+	<jsp:include page="menu2.jsp"/>
+<% } %>
+<%if(currentUser!=null && currentUser.isAdmin()){ %>
+	<jsp:include page="menu3.jsp"/>
+<% } %>
 		<table border="1">
 		<tr>
 			<th>Numero Ordine</th>
@@ -55,8 +64,8 @@
 			<td><%=codice%></td>
 			<td><%=quant%></td>
 			<td><%=iva%></td>
-			<td><%=singolopezzo%></td>
-			<td><%=prezzototale%></td>
+			<td><%=singolopezzo%> € </td>
+			<td><%=prezzototale%> € </td>
 		</tr>
 		
 	

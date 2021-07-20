@@ -21,18 +21,18 @@ public class UserDAO
       Statement stmt = null;    
       PreparedStatement preparedStatement = null;
 	
-      String username = bean.getUsername();    
+      String email = bean.getEmail();    
       String password = bean.getPassword();   
 	    
       String searchQuery =
-            "select * from cliente where username='"
-                     + username
+            "select * from cliente where email='"
+                     + email
                      + "' AND password='"
                      + password
                      + "'";
 	    
    // "System.out.println" prints in the console; Normally used to trace the process
-   System.out.println("Your user name is " + username);          
+   System.out.println("Your user name is " + email);          
    System.out.println("Your password is " + password);
    System.out.println("Query: "+searchQuery);
    
@@ -63,7 +63,9 @@ public class UserDAO
          String firstName = rs.getString("nome");
          String lastName = rs.getString("cognome");
 	     String admin=rs.getString("ruolo");
+	     String username=rs.getString("Username");
          System.out.println("Welcome " + firstName);
+         bean.setUsername(username);
          bean.setFirstName(firstName);
          bean.setLastName(lastName);
          bean.setValid(true);
@@ -150,6 +152,72 @@ return bean;
             }
         }
     
-    }   
+    }
+   
+   public static boolean check(String email) throws NamingException, SQLException {
+	   Context initCtx = new InitialContext();
+		Context envCtx = (Context) initCtx.lookup("java:comp/env");
+
+		ds = (DataSource) envCtx.lookup("jdbc/mydb");
+		currentCon = ds.getConnection();
+		 PreparedStatement preparedStatement = null;
+
+
+		UserBean user=null;
+       String selectSql = "select * from cliente where email = '"+email+"'";
+       try {
+       	
+           preparedStatement = currentCon.prepareStatement(selectSql);
+           ResultSet rs = preparedStatement.executeQuery();      
+           boolean more = rs.next();
+           if(!more) {
+        	   return false;
+           }
+           else {
+        	   return true;
+           }
+          
+       } finally {
+           try {
+               if (preparedStatement != null)
+                   preparedStatement.close();
+           } finally {
+               if (currentCon != null)
+               	currentCon.close();
+           }
+       }
+   }
+   public static boolean checkUser(String user) throws NamingException, SQLException {
+	   Context initCtx = new InitialContext();
+		Context envCtx = (Context) initCtx.lookup("java:comp/env");
+
+		ds = (DataSource) envCtx.lookup("jdbc/mydb");
+		currentCon = ds.getConnection();
+		 PreparedStatement preparedStatement = null;
+
+
+       String selectSql = "select * from cliente where username = '"+user+"'";
+       try {
+       	
+           preparedStatement = currentCon.prepareStatement(selectSql);
+           ResultSet rs = preparedStatement.executeQuery();      
+           boolean more = rs.next();
+           if(!more) {
+        	   return false;
+           }
+           else {
+        	   return true;
+           }
+          
+       } finally {
+           try {
+               if (preparedStatement != null)
+                   preparedStatement.close();
+           } finally {
+               if (currentCon != null)
+               	currentCon.close();
+           }
+       }
+   }
   
 }

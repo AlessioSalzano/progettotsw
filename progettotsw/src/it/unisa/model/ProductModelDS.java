@@ -265,27 +265,26 @@ public class ProductModelDS implements ProductModel {
 		}
 		
 
-	public synchronized void doUpdate(int id,String x, String set) throws SQLException {
+	public synchronized void doUpdateString(int codice,String nome,String rec ) throws SQLException {
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;
 
         String insertSQL = "UPDATE  product"
-                + " SET "+set+"= ?  WHERE code= '"+id+"'";
+                + " SET "+rec+"= ?  WHERE code= '"+codice+"'";
 
 
         try {
             connection = ds.getConnection();
             preparedStatement = connection.prepareStatement(insertSQL);
-
-            if ((set.equals("ricondizionato"))||(set.equals("name"))||(set.equals("description")))
-                preparedStatement.setString(1, x);
-
-            if((set.equals("price"))||(set.equals("quantity"))||(set.equals("Sconto"))) preparedStatement.setInt(1, Integer.parseInt(x));
+            preparedStatement.setString(1,nome);
+          
+        
+            
 
             preparedStatement.executeUpdate();
 
-            connection.commit();
+            
         } finally {
             try {
                 if (preparedStatement != null)
