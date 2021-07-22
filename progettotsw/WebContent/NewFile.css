@@ -129,11 +129,19 @@ button:hover {
   padding: 14px 20px;
   background-color: #f44336;
 }
+.cancelbtn2 {
+  padding: 14px 20px;
+  background-color: #f44336;
+}
 
 /* Float cancel and signup buttons and add an equal width */
 .cancelbtn, .signupbtn {
   float: center;
   width: 30%;
+}
+.cancelbtn2, .signupbtn2 {
+  float: center;
+  width: 10%;
 }
 
 /* Add padding to container elements */

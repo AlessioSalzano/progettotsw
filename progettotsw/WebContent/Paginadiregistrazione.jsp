@@ -147,7 +147,7 @@
 
 <form action="Register" method="get" class="form"  style="border:1px solid #ccc" onsubmit="event.preventDefault(); check(this)">
   <div class="container">
-    <h1>EFFETTUA LA REGISTRAZIONE</h1>
+    <h1>EFFETTUA LA REGISTRAZIONE</h1> 
 
     <hr>
 
@@ -187,7 +187,7 @@
 		<%} %>
 		<% if(currentUser!=null)  { %>
 <h1>HAI GIA EFFETTUATO IL LOGIN</h1>
-		<%	}%>
+		<%	}%> 
 	<jsp:include page="footer.jsp"/>
 </body>
 </html>

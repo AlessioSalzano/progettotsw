@@ -30,16 +30,10 @@
 <%if(currentUser!=null && currentUser.isAdmin()){ %>
 	<jsp:include page="menu3.jsp"/>
 <% } %>
-		<table border="1">
-		<tr>
-			<th>Numero Ordine</th>
-			<th>codice prodotto</th>
-			<th>quantita</th>
-			<th>iva</th>
-			<th>prezzo singolo pezzo</th>
-			<th>prezzo totale</th>
-			
-		</tr>
+	<br>
+	<h1>DETTAGLI ORDINE</h1> <br>
+		<hr>
+		
 		<% 	int numordine;
 			int codice;
 			int quant;
@@ -54,23 +48,21 @@
 				 iva= composizione.getIva();
 				 singolopezzo=composizione.getPrezzosingolopezzo();
 				 prezzototale =composizione.getPrezzototale();
-				System.out.println(numordine+" "+prezzototale);
-			
-			
+
 		%>
-		<tr>
+
+			<br> <img src="./getPicture?id=<%=codice%>" width="300" height="300"> <br>
+			<b>NUMERO DELL'ORDINE: </b><%=numordine%> <br>
+			<b>CODICE DEL PRODOTTO: </b><%=codice%> <br>
+			<b>QUANTITA' ACQUISTATE: </b><%=quant%> <br>
+			<b>IVA: </b><%=iva%> <br>
+			<b>PREZZO DEL SINGOLO PRODOTTO: </b><%=singolopezzo%>.00 €  <br>
+			<b>PREZZO TOTALE DELL'ACQUISTO: </b><%=prezzototale%>0 €  <br> <br>
 		
-			<td><%=numordine%></td>
-			<td><%=codice%></td>
-			<td><%=quant%></td>
-			<td><%=iva%></td>
-			<td><%=singolopezzo%> € </td>
-			<td><%=prezzototale%> € </td>
-		</tr>
 		
 	
 		<% }	%>
-			</table>
+	
 	<jsp:include page="footer.jsp"/>
 </body>
 </html>

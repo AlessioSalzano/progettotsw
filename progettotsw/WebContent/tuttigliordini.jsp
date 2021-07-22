@@ -35,21 +35,23 @@
 	<%} %>
 	<% if (currentUser!=null) {%>
 	<table border="1" id="customers">
+	<div class="container">
 	<form action="product" method="get">
                 <input type="hidden" name="action" value="ricercauser"> 
                 <label for="username"> USERNAME: </label><br> 
-                <input name="username" type="text" placeholder="inserisci username"><br> 
-                <input type="submit" value="submit"><input type="reset" value="Reset">
+                <input name="username" type="text" class="log" placeholder="inserisci username"><br> 
+                <button type="submit" class="signupbtn2">CERCA</button> <button type="submit" class="cancelbtn2">RESET</button><br>
                 </form>
                 <br>
                 <form action="product" method="get">
                 <input type="hidden" name="action" value="ricercaData"> 
                 <label for="DataOrdine1">Data inizio: </label><br> 
-                <input name="DataOrdine1" type="text" maxlength="20"  placeholder="inserisci data inizio"><br> 
+                <input name="DataOrdine1" type="text" class="log" maxlength="20"  placeholder="inserisci data inizio"><br> 
                 <label for="DataOrdine2">Data fine: </label><br>
-                <input name="DataOrdine2" type="text" maxlength="20"  placeholder="inserisci data fine"><br> 
-                <input type="submit" value="submit"><input type="reset" value="Reset">
+                <input name="DataOrdine2" type="text" class="log" maxlength="20"  placeholder="inserisci data fine"><br> 
+               <button type="submit" class="signupbtn2">CERCA</button> <button type="submit" class="cancelbtn2">RESET</button><br>
                 </form>
+                </div>
 		<tr>
 			<th>Numero Ordine</th>
 			<th>username</th>
@@ -71,7 +73,7 @@
 		
 			<td><%=numeroOrdine%></td>
 			<td><%=Username%></td>
-			<td><%=prezzo%> € </td>
+			<td><%=prezzo%>.00 € </td>
 			<td><%=data%></td>
 			<td><a href="product?action=dettagliordine&codice=<%=numeroOrdine%>">dettagli</a></td>
 				

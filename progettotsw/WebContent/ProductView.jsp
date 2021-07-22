@@ -24,6 +24,7 @@
 </head>
 
 <body>
+
 <jsp:include page="header.jsp"/>
 <% if (currentUser==null){%>
 	<jsp:include page="menu.jsp"/>
@@ -34,6 +35,7 @@
 <%if(currentUser!=null && currentUser.isAdmin()){ %>
 	<jsp:include page="menu3.jsp"/>
 <% } %>
+
 		<% int j=0;
 		 String[] nomi= {"column side","column middle","column side"};
 			if (products != null && products.size() != 0) {
@@ -47,7 +49,7 @@
 				 <div class="<%=nomi[j]%>">
 		 <br> <p class="descr"> <%=ls.get(i).getName()%> </p>
 			<img src="./getPicture?id=<%=ls.get(i).getCode()%>" width="300" height="300"> </br>
-			<b>PREZZO: <%=ls.get(i).getPrice()%> € </b></br> </br> </br>
+			<b>PREZZO: <%=ls.get(i).getPrice()%>.00 € </b></br> </br> </br>
 			<a class="mn" href="product?action=read&id=<%=ls.get(i).getCode()%>" target=_blank>DETTAGLI</a> 
 				<a class="mn" href="product?action=addC&id=<%=ls.get(i).getCode()%>">ACQUISTA</a> </br>
 				</div>

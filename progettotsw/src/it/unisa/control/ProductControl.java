@@ -159,6 +159,13 @@ public class ProductControl extends HttpServlet {
 						String nome= request.getParameter("valore");
 						int codice= Integer.parseInt(request.getParameter("codice"));
 						model.doUpdateString(codice,nome,rec);
+						try {
+							String sort = request.getParameter("sort");
+							request.removeAttribute("products");
+							request.setAttribute("products", model.doRetrieveAll(sort));
+						} catch (SQLException e) {
+							System.out.println("Error:" + e.getMessage());
+						}
 						RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin.jsp");
 						dispatcher.forward(request, response);
 					}
@@ -168,8 +175,16 @@ public class ProductControl extends HttpServlet {
 						String nome= request.getParameter("valore");
 						int codice= Integer.parseInt(request.getParameter("codice"));
 						model.doUpdateString(codice,nome,rec);
+						try {
+							String sort = request.getParameter("sort");
+							request.removeAttribute("products");
+							request.setAttribute("products", model.doRetrieveAll(sort));
+						} catch (SQLException e) {
+							System.out.println("Error:" + e.getMessage());
+						}
 						RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin.jsp");
 						dispatcher.forward(request, response);
+					
 					}
 					if(request.getParameter("parametro").equalsIgnoreCase("price")) {
 						String rec=request.getParameter("parametro");
@@ -177,6 +192,13 @@ public class ProductControl extends HttpServlet {
 						String nome= request.getParameter("valore");
 						int codice= Integer.parseInt(request.getParameter("codice"));
 						model.doUpdateString(codice,nome,rec);
+						try {
+							String sort = request.getParameter("sort");
+							request.removeAttribute("products");
+							request.setAttribute("products", model.doRetrieveAll(sort));
+						} catch (SQLException e) {
+							System.out.println("Error:" + e.getMessage());
+						}
 						RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin.jsp");
 						dispatcher.forward(request, response);
 					}
@@ -186,6 +208,13 @@ public class ProductControl extends HttpServlet {
 						String nome= request.getParameter("valore");
 						int codice= Integer.parseInt(request.getParameter("codice"));
 						model.doUpdateString(codice,nome,rec);
+						try {
+							String sort = request.getParameter("sort");
+							request.removeAttribute("products");
+							request.setAttribute("products", model.doRetrieveAll(sort));
+						} catch (SQLException e) {
+							System.out.println("Error:" + e.getMessage());
+						}
 						RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin.jsp");
 						dispatcher.forward(request, response);
 					}
@@ -195,6 +224,13 @@ public class ProductControl extends HttpServlet {
 						String nome= request.getParameter("valore");
 						int codice= Integer.parseInt(request.getParameter("codice"));
 						model.doUpdateString(codice,nome,rec);
+						try {
+							String sort = request.getParameter("sort");
+							request.removeAttribute("products");
+							request.setAttribute("products", model.doRetrieveAll(sort));
+						} catch (SQLException e) {
+							System.out.println("Error:" + e.getMessage());
+						}
 						RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin.jsp");
 						dispatcher.forward(request, response);
 					}
@@ -204,6 +240,13 @@ public class ProductControl extends HttpServlet {
 						String nome= request.getParameter("valore");
 						int codice= Integer.parseInt(request.getParameter("codice"));
 						model.doUpdateString(codice,nome,rec);
+						try {
+							String sort = request.getParameter("sort");
+							request.removeAttribute("products");
+							request.setAttribute("products", model.doRetrieveAll(sort));
+						} catch (SQLException e) {
+							System.out.println("Error:" + e.getMessage());
+						}
 						RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin.jsp");
 						dispatcher.forward(request, response);
 					}
@@ -213,6 +256,13 @@ public class ProductControl extends HttpServlet {
 						String nome= request.getParameter("valore");
 						int codice= Integer.parseInt(request.getParameter("codice"));
 						model.doUpdateString(codice,nome,rec);
+						try {
+							String sort = request.getParameter("sort");
+							request.removeAttribute("products");
+							request.setAttribute("products", model.doRetrieveAll(sort));
+						} catch (SQLException e) {
+							System.out.println("Error:" + e.getMessage());
+						}
 						RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin.jsp");
 						dispatcher.forward(request, response);
 					}
@@ -222,10 +272,16 @@ public class ProductControl extends HttpServlet {
 						String nome= request.getParameter("valore");
 						int codice= Integer.parseInt(request.getParameter("codice"));
 						model.doUpdateString(codice,nome,rec);
+						try {
+							String sort = request.getParameter("sort");
+							request.removeAttribute("products");
+							request.setAttribute("products", model.doRetrieveAll(sort));
+						} catch (SQLException e) {
+							System.out.println("Error:" + e.getMessage());
+						}
 						RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin.jsp");
 						dispatcher.forward(request, response);
 					}
-					
 					
 				}
 				else if(action.equalsIgnoreCase("tuttigliordini")) {

@@ -1,6 +1,5 @@
 <%
-	Collection<?> products = (Collection<?>) request.getAttribute("products");
-
+Collection<?> products = (Collection<?>) request.getAttribute("products");
 	
 	ProductBean product = (ProductBean) request.getAttribute("product");
 	UserBean currentUser = (UserBean) (session.getAttribute("currentSessionUser"));
@@ -33,10 +32,12 @@
 	<h1>NON HAI I PERMESSI PER ENTRARE IN QUESTA SEZIONE</h1>
 	<%} %>
 	<%if(currentUser!=null && currentUser.isAdmin()){ %>
-	<h2>PAGINA DELL'AMINISTRATORE</h2>
+	<br>
+	<h1>PAGINA DELL'AMMINISTRATORE</h1> <br>
+		<hr>
 	 <a href="product?action=tuttigliordini" class="mn"> ELENCO ORDINI</a>
 	  <a  href="Inserimento.jsp" class="mn"> INSERIMENTO</a>
-	   <a href="Modifica.jsp" class="mn"> MODIFICA</a>
+	   <a href="Modifica.jsp" class="mn"> MODIFICA</a> <br> <br> <br>
 	<table class="admin">
 		<tr>
 			<th></th>
@@ -60,7 +61,7 @@
 			<td><%=bean.getRicondizionato()%></td>
 			<td><%=bean.getIva()%></td>
 			<td><%=bean.getName()%></td>
-			<td><%=bean.getPrice()%> € </td>
+			<td><%=bean.getPrice()%>.00 € </td>
 			<td><%=bean.getDescription()%>  </td>
 			<td><a class="rm" href="product?action=delete&id=<%=bean.getCode()%>">Delete</a><br>
 		</tr>

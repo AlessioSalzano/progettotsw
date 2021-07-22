@@ -55,7 +55,7 @@
 			<td><img src="./getPicture?id=<%=beancart.getProduct().getCode()%>" width="150" height="150"></td>
 			<td>NOME PRODOTTO:<br> <%=name%></td>
 			<td>QUANTITA':<br> <%=quant%></td>
-			<td>PREZZO: <br> <%=price%></td>
+			<td>PREZZO: <br> <%=price%>0€</td>
 			<td><a class="rm" href="product?action=deleteC&id=<%=code%>">RIMUOVI</a></td>
 			
 		</tr>
@@ -65,7 +65,7 @@
 		
 		<%if (currentUser!=null){%>
 		<br> <br> <a class="mn" href="product?action=checkout&carrello=<%=request.getAttribute("cart")%>">ACQUISTA</a>
-		<h2>PREZZO TOTALE:<%=prezzototale %></h2>
+		<h2>PREZZO TOTALE:<%=prezzototale %>0€</h2>
 		<%} if(currentUser==null) { %>
 		<h2>DEVI EFFETTUARE IL <a href="LoginPage.jsp"> LOGIN</a> PRIMA DI POTER ACQUISTARE </h2>
 		<%}%>

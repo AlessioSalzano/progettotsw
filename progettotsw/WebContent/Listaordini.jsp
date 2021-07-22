@@ -16,7 +16,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<link href="NewFile.css" rel="stylesheet" type="text/css">
-	<title>Lista Ordini</title>
+	<title>ELENCO ORDINI</title>
 </head>
 
 <body>
@@ -30,7 +30,9 @@
 <%if(currentUser!=null && currentUser.isAdmin()){ %>
 	<jsp:include page="menu3.jsp"/>
 <% } %>
-	
+		<br>
+	<h1>ELENCO ORDINI</h1> <br>
+		<hr>
 	<table border="1" id="customers">
 		<tr>
 			<th>NUMERO ORDINE</th>
